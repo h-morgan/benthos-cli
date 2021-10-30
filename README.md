@@ -2,19 +2,23 @@
 
 This project is the backend code for our project called Benthos - an investment research tool for fundamental stock analysis.
 
-alphavantage.co/). Historical fundamental data (current as of 2021) for US companies was downloaded via SimFin. This data was then loaded into a [Postgres](https://www.postgresql.org/) database. The Alpha Vantage data provides current fundamental data, and recent data is added to the Postgres database from this source as it becomes available.
+The stock price and company fundamental data is sourced from [SimFin](https://simfin.com/) and [Alpha Vantage](https://www.alphavantage.co/). Simfin is the source for all pre-2020 daata for US companies. The Alpha Vantage data provides current fundamental data, and recent data is added to the Postgres database from this source as it becomes available.
 
 
 ## Table of Contents
 1. [Setup](#1-setup)
 2. [Configuration](#2-configuration)
-3. [Database](#3-database)
 
 ## 1. Setup
 
 First, clone the repo using the command:
 ```shell
-git clone https://github.com/h-morgan/value-invest.git
+git clone git@github.com:h-morgan/benthos-cli.git
+```
+
+Move into the project directory:
+```shell
+cd benthos-cli
 ```
 
 Next, intialize a virtual environment to store project dependencies. The following command uses the `venv` Python command to intialize a virtual environment called `venv`:
@@ -31,13 +35,12 @@ pip install -r requirements.txt
 
 This project requies a `.env` file to store environment variables and configuations. Create a `.env` file in the `src/` directory with the following contents:
 
-```json
-AV-API-TOKEN = "your-api-key"
-DB-USER = "username"
-PASSWORD = "password"
-HOST = "0.0.0.0"
-PORT = "5432"
-DATABASE = "invest-db"
+```
+DB_USER=username
+DB_PASSWORD=password
+DB_HOST=0.0.0.0
+DB_PORT=5432
+DB_NAME=invest-db
 ```
 
 In order to use use the project, an API key from [Alpha Vantage](https://www.alphavantage.co/) is needed. as described above. Once a free API key is obtained, the value needs to be stored in the `.env` file as shown above.
