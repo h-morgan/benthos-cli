@@ -1,15 +1,16 @@
 import database as db
 import pandas as pd
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import utils
 import click
 
 pd.set_option('display.max_columns', 30)
 
 
-#@click.command()
-#@click.option('--ticker', prompt = 'Enter a ticker in uppercase', help='Ticker symbol used to calculate margin of safety price')
-def start(ticker):
+@click.command()
+@click.option('--ticker', prompt = 'Enter a ticker in uppercase', help='Ticker symbol used to calculate margin of safety price')
+@click.option('--viz/--no-viz', default=False, help='Display graphs or not')
+def start(ticker, viz):
     '''
     This is the main function of the project
     Connects to Postgres DB
@@ -256,24 +257,39 @@ def start(ticker):
 
 
 
-    '''
-    # Print raw numbers and per share values as a figure
-    fig, axes = plt.subplots(nrows=4, ncols=2)
-    health_check_df.plot(subplots=True, ax=axes, x="Date")
-    fig.autofmt_xdate(rotation=45)
-    fig.suptitle(f"{STOCK} Moat Indicators")
-    plt.show()
-    
-    # Plot growth rate values
-    fig2, axes2 = plt.subplots(nrows=4, ncols=2)
-    growth_df.plot(subplots=True, ax=axes2, x="Num Years Ago")
-    fig2.autofmt_xdate(rotation=45)
-    fig2.suptitle(f"{STOCK} Growth Rates")
-    plt.show()
-    '''
+    if viz:
+        # Print raw numbers and per share values as a figure
+        fig, axes = plt.subplots(nrows=4, ncols=2)
+        health_check_df.plot(subplots=True, ax=axes, x="Date")
+        fig.autofmt_xdate(rotation=45)
+        fig.suptitle(f"{STOCK} Moat Indicators")
+        plt.show()
+        
+        # Plot growth rate values
+        fig2, axes2 = plt.subplots(nrows=4, ncols=2)
+        growth_df.plot(subplots=True, ax=axes2, x="Num Years Ago")
+        fig2.autofmt_xdate(rotation=45)
+        fig2.suptitle(f"{STOCK} Growth Rates")
+        plt.show()
+
     return result
 
 
+def main(ticker):
+    """This is the main method to act as a controller function"""
+
+    # connect to db
+
+    # get income statement data for stock
+
+    # get balance sheet data for stock
+
+    # get cash flow data for stock
+
+    # join and clean returned data, compute additional data columns
+
+
+    
 
 if __name__ == "__main__":
-    start('TMUS')
+    start()
