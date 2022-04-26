@@ -1,8 +1,8 @@
 # Benthos - Value Investment Research Tools
 
-This project is the backend code for our project called Benthos - an investment research tool for fundamental stock analysis.
+This project is the backend code for our project called Benthos - an investment research tool for fundamental stock analysis. This project is a combined effort (under construction) built by myself and [@daniellediloreto](https://github.com/daniellediloreto), who's background is in investment analytics.
 
-The stock price and company fundamental data is sourced from [SimFin](https://simfin.com/) and [Alpha Vantage](https://www.alphavantage.co/). Simfin is the source for all pre-2020 daata for US companies. The Alpha Vantage data provides current fundamental data, and recent data is added to the Postgres database from this source as it becomes available.
+The stock price and company fundamental data is sourced from [SimFin](https://simfin.com/) and [Alpha Vantage](https://www.alphavantage.co/). Simfin is the source for all pre-2020 data for US companies. The Alpha Vantage data provides current fundamental data, and recent data is added to the Postgres database from this source as it becomes available.
 
 
 ## Table of Contents
